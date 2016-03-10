@@ -34,6 +34,18 @@
 <br />
 <h3>
 <a name="recent-activity" class="anchor" href="#recent-activity"><span class="octicon octicon-link"></span></a>Recent Activity</h3>
+<h4>10-Jan-2016</h4>
+<p>I recently found a bug in the javascript library for Google's <a href="https://www.firebase.com">Firebase</a>.  Upon reporting it, they asked that I recreate the issue as a working example.  I <a href="https://github.com/adewinter/angularfire-seed">forked their angularfire-seed project</a> and created the issue there.</p>
+<br />
+<p>The problem:</p>
+<p>When using firebase.js to perform authWithOAuthRedirect(), <b><i>and there are no other URL Query Params</i></b>, the redirect after login finalization will fail.   When calling the method, one can successfully log in via the third party provider, and a successful redirect is issued to the browser.  However, once the client page reloads, firebase.js is unable to pick up the "__firebase_request_key" URL QueryParam in the URL because of the bug.  This means one cannot login using this method.</p>
+
+<p>The function <a href="https://github.com/firebase/firebase-bower/blob/f78ad65e24837274d4756060574e41e2661d49d8/firebase-debug.js#L3194">querystringDecode()</a> was the problem.  There was a poorly formed regex expression in the function that was failing to pull out the "__firebase_request_key" from the url/.</p>
+
+<p>Anyway, I emailed their support email and got a fast response.  After I submitted the seed project, they rolled out a fix in their next release (I think it was a week or two later).  In the meantime I figured out a workaround, so no real issues were had :)</p>
+<br />
+
+
 <h4>19-Dec-2013</h4>
 <p>A write up of an interesting <a href="http://adewinter.github.io/twitter">interview question</a>. The first case shows what was asked in the interview, while the second case expands on the idea, showing that even more profit can be generated through multiple buys and sells.
 <br />
@@ -52,11 +64,9 @@
 
 <p><strong><a href="http://www.linkedin.com/pub/anton-de-winter/b/432/a90">LinkedIn</a></strong></p>
 
-<p><strong><a href="https://coderwall.com/adewinter">CoderWall</a></strong></p>
-
 <p><strong><a href="mailto:adewinter+github@gmail.com">Email</a></strong></p>
 
-<p><strong><a href="static/Anton-de-Winter-resume-Jan-2014.pdf">My Resume</a></strong></p>
+<p><strong><a href="static/Anton_de_Winter-resume-Jan_2016.pdf">My Resume</a></strong></p>
 </section>
     </div>
 
